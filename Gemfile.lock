@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    omniauth-tailscale (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  omniauth-tailscale!
+
+BUNDLED WITH
+   2.3.24
