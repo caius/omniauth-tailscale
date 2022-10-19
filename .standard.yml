@@ -1,0 +1,5 @@
+# For available configuration options, see:
+#   https://github.com/testdouble/standard
+parallel: true
+# Mirror required_ruby_version min version in gemspec
+ruby_version: 2.7.0

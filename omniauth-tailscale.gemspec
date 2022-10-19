@@ -13,9 +13,9 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/caius/omniauth-tailscale"
   spec.license = "MIT"
 
-  # Mirror https://github.com/omniauth/omniauth/blob/v2.1.2/omniauth.gemspec
   spec.required_rubygems_version = ">= 1.3.5"
-  spec.required_ruby_version = ">= 2.2"
+  # Oldest ruby under support https://www.ruby-lang.org/en/downloads/branches/
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -31,4 +31,6 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "standard", "~> 1.3"
 end
