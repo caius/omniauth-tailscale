@@ -1,0 +1,40 @@
+PATH
+  remote: ../..
+  specs:
+    omniauth-tailscale (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hashie (5.0.0)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.8)
+    omniauth (2.1.0)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    puma (6.0.0)
+      nio4r (~> 2.0)
+    rack (2.2.4)
+    rack-protection (3.0.2)
+      rack
+    ruby2_keywords (0.0.5)
+    sinatra (3.0.2)
+      mustermann (~> 3.0)
+      rack (~> 2.2, >= 2.2.4)
+      rack-protection (= 3.0.2)
+      tilt (~> 2.0)
+    tilt (2.0.11)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  omniauth (~> 2.0, < 3)
+  omniauth-tailscale!
+  puma (~> 6.0, < 7)
+  sinatra (~> 3.0, < 4)
+
+BUNDLED WITH
+   2.3.24
