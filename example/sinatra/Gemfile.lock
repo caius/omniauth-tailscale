@@ -2,6 +2,7 @@ PATH
   remote: ../..
   specs:
     omniauth-tailscale (0.0.1)
+      omniauth (~> 2.0)
 
 GEM
   remote: https://rubygems.org/

@@ -1,5 +1,6 @@
 require "sinatra"
 require "omniauth"
+require "omniauth-tailscale"
 
 OmniAuth.config.on_failure = ->(env) do
   OmniAuth::FailureEndpoint.new(env).redirect_to_failure
