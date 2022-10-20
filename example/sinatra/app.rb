@@ -2,42 +2,21 @@ require "sinatra"
 require "omniauth"
 require "omniauth-tailscale"
 
-OmniAuth.config.on_failure = ->(env) do
-  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
-end
+# magic to make tailscale function - no POST required
+OmniAuth.config.allowed_request_methods << :get
+OmniAuth.config.silence_get_warning = true
 
 enable :sessions
 
-use OmniAuth::Builder do
-  provider :tailscale
-end
-
-get "/auth/:provider/callback" do
-  auth_info = request.env["omniauth.auth"]
-  p auth_info
-
-  session[:user] = {
-    login_name: auth_info.dig("info", "login_name"),
-    display_name: auth_info.dig("info", "display_name")
-  }
-end
+# /auth/developer kicks this off?
+use OmniAuth::Strategies::Tailscale
 
 get "/" do
-  unless session[:user]
-    redirect "/auth/tailscale"
-    return
-  end
-
-  erb :dashboard
+  "Woa, black betty"
 end
 
-__END__
+get "/auth/tailscale/callback" do
+  p request.env["omniauth.auth"]
 
-@@ dashboard
-<html>
-  <body>
-    <h1>Hello <%= session[:user][:display_name] %></h1>
-
-    <p>You are uniquely identified as <%= session[:user][:login_name] %></p>
-  </body>
-</html>
+  "Holy fuckballs"
+end
