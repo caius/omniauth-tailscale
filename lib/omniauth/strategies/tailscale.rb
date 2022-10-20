@@ -1,3 +1,4 @@
+require "debug"
 require "omniauth"
 
 module OmniAuth
