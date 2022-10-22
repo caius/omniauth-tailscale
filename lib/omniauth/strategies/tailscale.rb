@@ -1,5 +1,6 @@
 require "debug"
 require "omniauth"
+require "tsclient"
 
 module OmniAuth
   module Strategies
@@ -9,16 +10,18 @@ module OmniAuth
       def request_phase
         # TODO: hit tailscale's localapi to authenticate ourselves?
 
-        p request.env["REMOTE_ADDR"]
+        profile = Tsclient.default_client.whois(request.env["REMOTE_ADDR"])
 
-        p callback_url
-
-        # FIXME: include tailscale params somehow - query string?
-        redirect "#{callback_url}?login_name=caius%40caius.name&display_name=Caius%20Durling"
+        if profile&.human?
+          # FIXME: query string acceptable?!
+          redirect "#{callback_url}?login_name=#{profile.identifier}&display_name=#{profile.name}"
+        else
+          fail!("No user found")
+        end
       end
 
       def auth_hash
-        binding.break
+        # binding.break
         super
       end
 

@@ -12,11 +12,25 @@ enable :sessions
 use OmniAuth::Strategies::Tailscale
 
 get "/" do
-  "Woa, black betty"
+  unless session[:user]
+    redirect "/auth/tailscale"
+  end
+
+  "Woa, black betty. Hello #{session[:user][:name]}"
+end
+
+get "/logout" do
+  session.clear
+
+  redirect "/"
 end
 
 get "/auth/tailscale/callback" do
   p request.env["omniauth.auth"]
 
-  "Holy fuckballs"
+  session[:user] = {
+    name: request.env["omniauth.auth"].info[:display_name]
+  }
+
+  redirect "/"
 end
