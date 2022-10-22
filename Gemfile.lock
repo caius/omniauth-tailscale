@@ -3,6 +3,7 @@ PATH
   specs:
     omniauth-tailscale (0.0.1)
       omniauth (~> 2.0)
+      tsclient (~> 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -52,7 +53,11 @@ GEM
     standard (1.16.1)
       rubocop (= 1.35.1)
       rubocop-performance (= 1.14.3)
+    tsclient (0.1.1)
+      json (~> 2.5)
+      values (~> 1.8)
     unicode-display_width (2.3.0)
+    values (1.8.0)
 
 PLATFORMS
   arm64-darwin-21

@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "omniauth", "~> 2.0"
+  spec.add_dependency "tsclient", "~> 0.1.0"
 
   spec.add_development_dependency "debug", ">= 1.0.0"
   spec.add_development_dependency "minitest", "~> 5.0"
