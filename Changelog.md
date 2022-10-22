@@ -16,6 +16,8 @@ All notable changes to this project will be documented below. The format is base
 
 ## [Unreleased]
 
+- Added: Strategy functional on macOS
+- Added: Lean on tsclient gem for wrapping localapi
 - Added: Example sinatra app making use of strategy
 - Added: Readme Drive Development ahoy
 
