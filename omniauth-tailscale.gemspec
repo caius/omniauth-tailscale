@@ -13,9 +13,9 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/caius/omniauth-tailscale"
   spec.license = "MIT"
 
-  # Mirror https://github.com/omniauth/omniauth/blob/v2.1.0/omniauth.gemspec
+  # Mirror https://github.com/omniauth/omniauth/blob/v2.1.2/omniauth.gemspec
   spec.required_rubygems_version = ">= 1.3.5"
-  spec.required_ruby_version = ">= 2.2.0"
+  spec.required_ruby_version = ">= 2.2"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
