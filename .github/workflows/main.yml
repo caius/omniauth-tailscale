@@ -1,0 +1,43 @@
+name: "omniauth-tailscale CI"
+
+on:
+  push:
+    branches:
+      - "main"
+
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: "ubuntu-latest"
+    name: "Lint"
+    steps:
+      - uses: "actions/checkout@v3"
+      - name: "Set up Ruby"
+        uses: "ruby/setup-ruby@v1"
+        with:
+          bundler-cache: true
+      - name: "Lint"
+        run: "bundle exec standardrb"
+
+  build:
+    runs-on: "ubuntu-latest"
+    name: "Tests - Ruby ${{ matrix.ruby }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - "2.7.8"
+          - "3.0.6"
+          - "3.1.4"
+          - "3.2.3"
+          - "3.3.0"
+    steps:
+    - uses: "actions/checkout@v3"
+    - name: "Set up Ruby"
+      uses: "ruby/setup-ruby@v1"
+      with:
+        ruby-version: "${{ matrix.ruby }}"
+        bundler-cache: true
+    - name: "Tests"
+      run: "bundle exec rake spec"

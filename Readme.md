@@ -6,6 +6,36 @@ This is an unofficial OmniAuth Strategy for authenticating via [Tailscale][]. In
 
 [Tailscale]: https://tailscale.com/
 
+## Installation
+
+Install the gem and add to the application's Gemfile by executing:
+
+    $ bundle add omniauth-tailscale
+
+If bundler is not being used to manage dependencies, install the gem by executing:
+
+    $ gem install omniauth-tailscale
+
+## Usage
+
+Provided the server is being accessed over the tailnet, and a local tailscale client is running, that should be all the setup required for this to work.
+
+Configure OmniAuth in your application to use the tailscale provider
+
+```ruby
+provider :tailscale
+```
+
+Wire up the `/auth/tailscale/callback` endpoint to handle the information handed back from the provider.
+
+Wire up `/auth/failure` to handle authentication failure.
+
+You should expect `:login_name` to contain the unique SSO identifier for the tailscale user
+
+If you only want certain people to have access, or only allow access to specific groups you should use the Tailscale ACL to dis/allow access accordingly. If for some reason that's not possible, you will need to handle whitelisting people in the `/auth/tailscale/callback` handler yourself.
+
+See the `examples/` subdirectories for example usage in applications.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
